@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<table id="table">
+    <tr>
+        <td><input id="good" type="range" min="0" max="1" onclick="goodClick()" value="0"></td>
+        <td>GOOD</td>
+    </tr>
+    <tr>
+        <td><input id="fast" type="range" min="0" max="1" onclick="fastClick()" value="0"></td>
+        <td>FAST</td>
+    </tr>
+    <tr>
+        <td><input id="cheap" type="range" min="0" max="1" onclick="cheapClick()"  value="0"></td>
+        <td>CHEAP</td>
+    </tr>
+</table>
+
+<script>
+let good = false;
+let fast = false;
+let cheap = false;
+    function goodClick() {
+        stt = parseInt(Math.random() *2 );
+        good = ! good;
+        if (good){
+            document.getElementById('good').value = 1;
+            if (fast && cheap){
+                if (stt){
+                    document.getElementById('fast').value = 0;
+                    fast = false;
+                }else {
+                    document.getElementById('cheap').value = 0;
+                    cheap = false;
+                }
+            }
+        }else {
+            document.getElementById('good').value = 0;
+        }
+    }
+function fastClick() {
+    sst = parseInt(Math.random() * 2);
+    fast = !fast;
+    if (fast) {
+        document.getElementById('fast').value = 1;
+        if (cheap && good) {
+            if (sst) {
+                document.getElementById('cheap').value = 0;
+                cheap = false;
+            } else {
+                document.getElementById('good').value = 0;
+                good = false;
+            }
+        }
+    } else {
+        document.getElementById('fast').value = 0;
+    }
+}
+
+function cheapClick() {
+    sst = parseInt(Math.random() * 2);
+    cheap = !cheap;
+    if (cheap) {
+        document.getElementById('cheap').value = 1;
+        if (good && fast) {
+            if (sst) {
+                document.getElementById('good').value = 0;
+                good = false;
+            } else {
+                document.getElementById('fast').value = 0;
+                fast = false;
+            }
+        }
+    } else {
+        document.getElementById('cheap').value = 0;
+    }
+}
+
+</script>
+
+</body>
+</html>
